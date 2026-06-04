@@ -43,6 +43,16 @@ Put the original photos here with these file names. The page loads them automati
 - `03-01.jpg`
 - `03-02.jpg`
 - `03-03.jpg`
+- `03-04.jpg`
+- `03-05.jpg`
+- `03-06.jpg`
+- `03-07.jpg`
+- `03-08.jpg`
+- `03-09.jpg`
+- `03-10.jpg`
+- `03-11.jpg`
+- `03-12.jpg`
+- `03-13.jpg`
 - `04-01.jpg`
 - `04-02.jpg`
 - `05-01.jpg`
