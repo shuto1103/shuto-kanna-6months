@@ -4,6 +4,12 @@ Put the original photos here with these file names. The page loads them automati
 
 - `before-01.jpg`
 - `before-02.jpg`
+- `before-03.jpg`
+- `before-04.jpg`
+- `before-05.jpg`
+- `before-06.jpg`
+- `before-07.jpg`
+- `before-08.jpg`
 - `01-01.jpg`
 - `01-02.jpg`
 - `02-01.jpg`
