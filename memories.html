@@ -539,9 +539,40 @@ img{display:block;max-width:100%;height:auto}
   .section-head{grid-template-columns:1fr;gap:12px;margin-bottom:30px}
   .section-rule{width:100%;transform:none}
   .section-note{text-align:left;white-space:normal}
-  .photo-board{grid-template-columns:repeat(6, 1fr);gap:14px}
-  .photo-card,.photo-card.feature,.photo-card.tall{grid-column:span 6}
-  .photo-card.small{grid-column:span 3}
+  .photo-board{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    gap:0;
+    padding:8px 0 42px;
+  }
+  .photo-board .photo-card,
+  .photo-board .photo-card.feature,
+  .photo-board .photo-card.tall,
+  .photo-board .photo-card.small{
+    grid-column:unset;
+    width:min(282px, 76vw);
+    margin-bottom:18px;
+  }
+  .photo-board .photo-card:nth-child(odd){
+    align-self:flex-start;
+    --tilt:-3.2deg;
+  }
+  .photo-board .photo-card:nth-child(even){
+    align-self:flex-end;
+    --tilt:3.4deg;
+  }
+  .photo-board .photo-card:nth-child(3n){
+    width:min(308px, 82vw);
+    --tilt:-1.4deg;
+  }
+  .photo-board .photo-card:nth-child(4n){
+    width:min(260px, 70vw);
+    --tilt:4.6deg;
+  }
+  .photo-board .photo-card:nth-child(5n){
+    margin-bottom:4px;
+  }
   .photo-placeholder{min-height:180px}
   .continuing{height:62svh}
 }
