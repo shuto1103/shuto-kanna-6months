@@ -558,7 +558,7 @@ img{display:block;max-width:100%;height:auto}
   .photo-board .photo-card.small{
     grid-column:unset;
     width:min(278px, 74vw);
-    margin-bottom:10px;
+    margin-bottom:74px;
   }
   .photo-board .photo-card:nth-child(odd){
     align-self:flex-start;
@@ -583,7 +583,7 @@ img{display:block;max-width:100%;height:auto}
     width:min(292px, 78vw);
     align-self:flex-start;
     margin-left:4vw;
-    margin-bottom:-8px;
+    margin-bottom:128px;
     --tilt:-2.6deg;
   }
   .photo-board .photo-card:nth-child(6n){
@@ -595,7 +595,7 @@ img{display:block;max-width:100%;height:auto}
   .photo-board .photo-card:nth-child(7n){
     width:min(326px, 86vw);
     align-self:center;
-    margin-bottom:-2px;
+    margin-bottom:118px;
     --tilt:-5.4deg;
   }
   .photo-board .photo-card:nth-child(8n){
@@ -616,8 +616,8 @@ img{display:block;max-width:100%;height:auto}
     left:var(--x);
     top:var(--y);
     width:var(--size);
-    aspect-ratio:1;
-    object-fit:cover;
+    height:auto;
+    object-fit:contain;
     padding:5px;
     border-radius:var(--radius);
     background:#fff8e8;
@@ -961,9 +961,9 @@ document.querySelectorAll(".photo-card[data-photo]").forEach((card) => {
 });
 
 const stampSources = Array.from({ length: 86 }, (_, i) => `assets/stamps/stamp-${String(i + 1).padStart(2, "0")}.jpg`);
-const stampSizes = [118, 148, 132, 178, 140, 166, 124, 188, 152, 136, 172, 120];
+const stampRatios = [1.3636, 1.7822, 0.725, 1.2162, 0.95, 0.9917, 0.4444, 0.8611, 0.9444, 0.9806, 1.3953, 0.6583, 0.8722, 0.8444, 0.5528, 0.5528, 0.8333, 2.3077, 0.9278, 1.7308, 1.791, 1.1688, 1.2996, 1.5254, 0.8861, 1.6, 0.6833, 0.5194, 0.8444, 0.775, 0.75, 1.0084, 1.0976, 0.8278, 0.875, 1.0909, 1.2903, 0.9083, 0.8389, 1.3636, 1.1429, 2.2086, 0.9972, 0.9944, 2.7068, 1.0169, 0.725, 0.8444, 1.875, 2.1302, 0.6, 0.9111, 1.1111, 1.5063, 0.7611, 0.9083, 0.9694, 1.3585, 0.9417, 1.4173, 0.9139, 0.9278, 1.5385, 0.9917, 0.7556, 1.8462, 4.557, 1.118, 0.5611, 0.8056, 2.3226, 0.7611, 1.519, 0.6833, 1.4575, 0.8861, 0.6278, 0.8167, 0.8667, 0.3944, 1.0345, 0.8861, 1.2371, 0.9083, 1.3043, 1.3953];
+const stampSizes = [132, 164, 146, 192, 154, 178, 138, 198, 168, 150, 184, 134];
 const stampTurns = [-12, 8, -5, 14, -9, 4, 11, -15, 6, -7, 13, -3];
-const stampY = [0.18, 0.42, 0.66, 0.3, 0.55, 0.74];
 let stampFrame = 0;
 
 function scheduleStampLayout() {
@@ -982,32 +982,84 @@ function layoutStamps() {
 
     const boardRect = board.getBoundingClientRect();
     const cards = [...board.querySelectorAll(".photo-card")];
+    const cardBoxes = cards.map((card) => {
+      const rect = card.getBoundingClientRect();
+      return {
+        left: rect.left - boardRect.left,
+        right: rect.right - boardRect.left,
+        top: rect.top - boardRect.top,
+        bottom: rect.bottom - boardRect.top,
+      };
+    });
+    const placedBoxes = [];
+
+    const overlaps = (box, other) => (
+      box.left < other.right &&
+      box.right > other.left &&
+      box.top < other.bottom &&
+      box.bottom > other.top
+    );
 
     cards.forEach((card, index) => {
       if (index % 2 === 1 && index % 5 !== 3) return;
 
-      const cardRect = card.getBoundingClientRect();
-      const size = stampSizes[(stampIndex + index) % stampSizes.length];
-      const emptyRight = cardRect.left + cardRect.width / 2 < boardRect.left + boardRect.width / 2;
-      const minX = size / 2 + 6;
-      const maxX = boardRect.width - size / 2 - 6;
-      const gap = 16 + ((index % 4) * 4);
-      let x = emptyRight
-        ? cardRect.right - boardRect.left + gap + size / 2
-        : cardRect.left - boardRect.left - gap - size / 2;
+      const cardBox = cardBoxes[index];
+      const sourceIndex = stampIndex % stampSources.length;
+      const ratio = stampRatios[sourceIndex] || 1;
+      const maxHeight = 230;
+      const width = Math.min(stampSizes[(stampIndex + index) % stampSizes.length], maxHeight / ratio);
+      const height = width * ratio;
+      const pad = 14;
+      const rightLane = cardBox.left + (cardBox.right - cardBox.left) / 2 < boardRect.width / 2;
+      const candidates = [
+        {
+          x: rightLane ? boardRect.width - width / 2 - pad : width / 2 + pad,
+          y: cardBox.bottom + height / 2 + 18,
+        },
+        {
+          x: rightLane ? width / 2 + pad : boardRect.width - width / 2 - pad,
+          y: cardBox.bottom + height / 2 + 24,
+        },
+        {
+          x: boardRect.width / 2,
+          y: cardBox.bottom + height / 2 + 20,
+        },
+        {
+          x: rightLane ? boardRect.width - width / 2 - pad : width / 2 + pad,
+          y: cardBox.top - height / 2 - 18,
+        },
+      ];
 
-      x = Math.max(minX, Math.min(maxX, x));
+      const placement = candidates.find((candidate) => {
+        const box = {
+          left: candidate.x - width / 2,
+          right: candidate.x + width / 2,
+          top: candidate.y - height / 2,
+          bottom: candidate.y + height / 2,
+        };
+        const inside = box.left >= 0 && box.right <= boardRect.width && box.top >= 0 && box.bottom <= board.scrollHeight;
+        return inside && !cardBoxes.some((cardBox) => overlaps(box, cardBox)) && !placedBoxes.some((placedBox) => overlaps(box, placedBox));
+      });
 
-      const y = cardRect.top - boardRect.top + cardRect.height * stampY[(stampIndex + index) % stampY.length];
+      if (!placement) return;
+
+      const box = {
+        left: placement.x - width / 2,
+        right: placement.x + width / 2,
+        top: placement.y - height / 2,
+        bottom: placement.y + height / 2,
+      };
+      placedBoxes.push(box);
+
       const stamp = document.createElement("img");
       stamp.className = "memory-stamp";
-      stamp.src = stampSources[stampIndex % stampSources.length];
+      stamp.src = stampSources[sourceIndex];
       stamp.alt = "";
       stamp.loading = "lazy";
       stamp.decoding = "async";
-      stamp.style.setProperty("--x", `${Math.round(x)}px`);
-      stamp.style.setProperty("--y", `${Math.round(y)}px`);
-      stamp.style.setProperty("--size", `${size}px`);
+      stamp.style.setProperty("--x", `${Math.round(placement.x)}px`);
+      stamp.style.setProperty("--y", `${Math.round(placement.y)}px`);
+      stamp.style.setProperty("--size", `${Math.round(width)}px`);
       stamp.style.setProperty("--r", `${stampTurns[(stampIndex + index) % stampTurns.length]}deg`);
       stamp.style.setProperty("--radius", index % 3 === 0 ? "999px" : "12px");
       board.appendChild(stamp);
