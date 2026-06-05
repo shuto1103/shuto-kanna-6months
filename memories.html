@@ -551,27 +551,58 @@ img{display:block;max-width:100%;height:auto}
   .photo-board .photo-card.tall,
   .photo-board .photo-card.small{
     grid-column:unset;
-    width:min(282px, 76vw);
-    margin-bottom:18px;
+    width:min(278px, 74vw);
+    margin-bottom:10px;
   }
   .photo-board .photo-card:nth-child(odd){
     align-self:flex-start;
-    --tilt:-3.2deg;
+    --tilt:-4.2deg;
   }
   .photo-board .photo-card:nth-child(even){
     align-self:flex-end;
-    --tilt:3.4deg;
+    --tilt:3.8deg;
   }
   .photo-board .photo-card:nth-child(3n){
-    width:min(308px, 82vw);
-    --tilt:-1.4deg;
+    width:min(314px, 84vw);
+    align-self:center;
+    --tilt:-1.2deg;
   }
   .photo-board .photo-card:nth-child(4n){
-    width:min(260px, 70vw);
-    --tilt:4.6deg;
+    width:min(246px, 66vw);
+    align-self:flex-end;
+    margin-right:5vw;
+    --tilt:5.8deg;
   }
   .photo-board .photo-card:nth-child(5n){
-    margin-bottom:4px;
+    width:min(292px, 78vw);
+    align-self:flex-start;
+    margin-left:4vw;
+    margin-bottom:-8px;
+    --tilt:-2.6deg;
+  }
+  .photo-board .photo-card:nth-child(6n){
+    width:min(238px, 64vw);
+    align-self:flex-start;
+    margin-left:10vw;
+    --tilt:2.2deg;
+  }
+  .photo-board .photo-card:nth-child(7n){
+    width:min(326px, 86vw);
+    align-self:center;
+    margin-bottom:-2px;
+    --tilt:-5.4deg;
+  }
+  .photo-board .photo-card:nth-child(8n){
+    width:min(266px, 71vw);
+    align-self:flex-end;
+    margin-right:1vw;
+    --tilt:1.6deg;
+  }
+  .photo-board .photo-card:nth-child(9n){
+    width:min(302px, 80vw);
+    align-self:flex-start;
+    margin-left:1vw;
+    --tilt:4.4deg;
   }
   .photo-placeholder{min-height:180px}
   .continuing{height:62svh}
