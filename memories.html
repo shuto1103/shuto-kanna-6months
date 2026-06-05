@@ -214,6 +214,8 @@ img{display:block;max-width:100%;height:auto}
 .story-section{
   padding:92px 0;
   border-top:1px solid var(--line);
+  position:relative;
+  overflow:visible;
 }
 .section-inner{
   width:min(1040px, calc(100% - 36px));
@@ -528,6 +530,17 @@ img{display:block;max-width:100%;height:auto}
   border-radius:2px;
 }
 
+
+.sticker{
+  position:absolute;
+  width:clamp(52px,13vw,88px);
+  pointer-events:none;
+  z-index:8;
+  box-shadow:2px 3px 10px rgba(47,41,34,.22);
+  border:2px solid rgba(255,255,255,.85);
+  border-radius:2px;
+  opacity:.9;
+}
 @media(max-width:760px){
   .hero{padding-inline:14px}
   .hero::before{inset:10px}
@@ -650,6 +663,19 @@ img{display:block;max-width:100%;height:auto}
   </section>
 
   <section class="story-section" id="before">
+  <img class="sticker" src="assets/photos/add-01.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-02.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-03.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-04.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-05.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-06.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-07.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-08.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-09.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-10.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-11.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-12.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">00</span>
@@ -700,24 +726,25 @@ img{display:block;max-width:100%;height:auto}
           <div class="photo-placeholder"><span>BEFORE 08</span></div>
           <figcaption class="photo-caption">BEFORE / 08</figcaption>
         </figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-01.jpg"><!-- <img src="assets/photos/add-01.jpg" alt=""> --><div class="photo-placeholder"><span>add-01.jpg</span></div><figcaption class="photo-caption">add-01.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-02.jpg"><!-- <img src="assets/photos/add-02.jpg" alt=""> --><div class="photo-placeholder"><span>add-02.jpg</span></div><figcaption class="photo-caption">add-02.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-03.jpg"><!-- <img src="assets/photos/add-03.jpg" alt=""> --><div class="photo-placeholder"><span>add-03.jpg</span></div><figcaption class="photo-caption">add-03.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-04.jpg"><!-- <img src="assets/photos/add-04.jpg" alt=""> --><div class="photo-placeholder"><span>add-04.jpg</span></div><figcaption class="photo-caption">add-04.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-05.jpg"><!-- <img src="assets/photos/add-05.jpg" alt=""> --><div class="photo-placeholder"><span>add-05.jpg</span></div><figcaption class="photo-caption">add-05.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-06.jpg"><!-- <img src="assets/photos/add-06.jpg" alt=""> --><div class="photo-placeholder"><span>add-06.jpg</span></div><figcaption class="photo-caption">add-06.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-07.jpg"><!-- <img src="assets/photos/add-07.jpg" alt=""> --><div class="photo-placeholder"><span>add-07.jpg</span></div><figcaption class="photo-caption">add-07.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-08.jpg"><!-- <img src="assets/photos/add-08.jpg" alt=""> --><div class="photo-placeholder"><span>add-08.jpg</span></div><figcaption class="photo-caption">add-08.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-09.jpg"><!-- <img src="assets/photos/add-09.jpg" alt=""> --><div class="photo-placeholder"><span>add-09.jpg</span></div><figcaption class="photo-caption">add-09.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-10.jpg"><!-- <img src="assets/photos/add-10.jpg" alt=""> --><div class="photo-placeholder"><span>add-10.jpg</span></div><figcaption class="photo-caption">add-10.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-11.jpg"><!-- <img src="assets/photos/add-11.jpg" alt=""> --><div class="photo-placeholder"><span>add-11.jpg</span></div><figcaption class="photo-caption">add-11.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-12.jpg"><!-- <img src="assets/photos/add-12.jpg" alt=""> --><div class="photo-placeholder"><span>add-12.jpg</span></div><figcaption class="photo-caption">add-12.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
 
   <section class="story-section" id="month-1">
+  <img class="sticker" src="assets/photos/add-13.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-14.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-15.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-16.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-17.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-18.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-19.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-20.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-21.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-22.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-23.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-24.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">01</span>
@@ -743,24 +770,25 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card tall" data-photo="assets/photos/01-16.jpg"><!-- <img src="assets/photos/01-16.jpg" alt="1ヶ月目の写真 16"> --><div class="photo-placeholder"><span>01 / 16</span></div><figcaption class="photo-caption">1 MONTH / 16</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/01-17.jpg"><!-- <img src="assets/photos/01-17.jpg" alt="1ヶ月目の写真 17"> --><div class="photo-placeholder"><span>01 / 17</span></div><figcaption class="photo-caption">1 MONTH / 17</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/01-18.jpg"><!-- <img src="assets/photos/01-18.jpg" alt="1ヶ月目の写真 18"> --><div class="photo-placeholder"><span>01 / 18</span></div><figcaption class="photo-caption">1 MONTH / 18</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-13.jpg"><!-- <img src="assets/photos/add-13.jpg" alt=""> --><div class="photo-placeholder"><span>add-13.jpg</span></div><figcaption class="photo-caption">add-13.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-14.jpg"><!-- <img src="assets/photos/add-14.jpg" alt=""> --><div class="photo-placeholder"><span>add-14.jpg</span></div><figcaption class="photo-caption">add-14.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-15.jpg"><!-- <img src="assets/photos/add-15.jpg" alt=""> --><div class="photo-placeholder"><span>add-15.jpg</span></div><figcaption class="photo-caption">add-15.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-16.jpg"><!-- <img src="assets/photos/add-16.jpg" alt=""> --><div class="photo-placeholder"><span>add-16.jpg</span></div><figcaption class="photo-caption">add-16.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-17.jpg"><!-- <img src="assets/photos/add-17.jpg" alt=""> --><div class="photo-placeholder"><span>add-17.jpg</span></div><figcaption class="photo-caption">add-17.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-18.jpg"><!-- <img src="assets/photos/add-18.jpg" alt=""> --><div class="photo-placeholder"><span>add-18.jpg</span></div><figcaption class="photo-caption">add-18.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-19.jpg"><!-- <img src="assets/photos/add-19.jpg" alt=""> --><div class="photo-placeholder"><span>add-19.jpg</span></div><figcaption class="photo-caption">add-19.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-20.jpg"><!-- <img src="assets/photos/add-20.jpg" alt=""> --><div class="photo-placeholder"><span>add-20.jpg</span></div><figcaption class="photo-caption">add-20.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-21.jpg"><!-- <img src="assets/photos/add-21.jpg" alt=""> --><div class="photo-placeholder"><span>add-21.jpg</span></div><figcaption class="photo-caption">add-21.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-22.jpg"><!-- <img src="assets/photos/add-22.jpg" alt=""> --><div class="photo-placeholder"><span>add-22.jpg</span></div><figcaption class="photo-caption">add-22.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-23.jpg"><!-- <img src="assets/photos/add-23.jpg" alt=""> --><div class="photo-placeholder"><span>add-23.jpg</span></div><figcaption class="photo-caption">add-23.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-24.jpg"><!-- <img src="assets/photos/add-24.jpg" alt=""> --><div class="photo-placeholder"><span>add-24.jpg</span></div><figcaption class="photo-caption">add-24.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
 
   <section class="story-section" id="month-2">
+  <img class="sticker" src="assets/photos/add-25.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-26.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-27.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-28.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-29.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-30.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-31.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-32.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-33.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-34.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-35.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-36.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">02</span>
@@ -780,24 +808,26 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card tall" data-photo="assets/photos/02-10.jpg"><!-- <img src="assets/photos/02-10.jpg" alt="2ヶ月目の写真 10"> --><div class="photo-placeholder"><span>02 / 10</span></div><figcaption class="photo-caption">2 MONTH / 10</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/02-11.jpg"><!-- <img src="assets/photos/02-11.jpg" alt="2ヶ月目の写真 11"> --><div class="photo-placeholder"><span>02 / 11</span></div><figcaption class="photo-caption">2 MONTH / 11</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/02-12.jpg"><!-- <img src="assets/photos/02-12.jpg" alt="2ヶ月目の写真 12"> --><div class="photo-placeholder"><span>02 / 12</span></div><figcaption class="photo-caption">2 MONTH / 12</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-25.jpg"><!-- <img src="assets/photos/add-25.jpg" alt=""> --><div class="photo-placeholder"><span>add-25.jpg</span></div><figcaption class="photo-caption">add-25.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-26.jpg"><!-- <img src="assets/photos/add-26.jpg" alt=""> --><div class="photo-placeholder"><span>add-26.jpg</span></div><figcaption class="photo-caption">add-26.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-27.jpg"><!-- <img src="assets/photos/add-27.jpg" alt=""> --><div class="photo-placeholder"><span>add-27.jpg</span></div><figcaption class="photo-caption">add-27.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-28.jpg"><!-- <img src="assets/photos/add-28.jpg" alt=""> --><div class="photo-placeholder"><span>add-28.jpg</span></div><figcaption class="photo-caption">add-28.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-29.jpg"><!-- <img src="assets/photos/add-29.jpg" alt=""> --><div class="photo-placeholder"><span>add-29.jpg</span></div><figcaption class="photo-caption">add-29.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-30.jpg"><!-- <img src="assets/photos/add-30.jpg" alt=""> --><div class="photo-placeholder"><span>add-30.jpg</span></div><figcaption class="photo-caption">add-30.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-31.jpg"><!-- <img src="assets/photos/add-31.jpg" alt=""> --><div class="photo-placeholder"><span>add-31.jpg</span></div><figcaption class="photo-caption">add-31.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-32.jpg"><!-- <img src="assets/photos/add-32.jpg" alt=""> --><div class="photo-placeholder"><span>add-32.jpg</span></div><figcaption class="photo-caption">add-32.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-33.jpg"><!-- <img src="assets/photos/add-33.jpg" alt=""> --><div class="photo-placeholder"><span>add-33.jpg</span></div><figcaption class="photo-caption">add-33.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-34.jpg"><!-- <img src="assets/photos/add-34.jpg" alt=""> --><div class="photo-placeholder"><span>add-34.jpg</span></div><figcaption class="photo-caption">add-34.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-35.jpg"><!-- <img src="assets/photos/add-35.jpg" alt=""> --><div class="photo-placeholder"><span>add-35.jpg</span></div><figcaption class="photo-caption">add-35.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-36.jpg"><!-- <img src="assets/photos/add-36.jpg" alt=""> --><div class="photo-placeholder"><span>add-36.jpg</span></div><figcaption class="photo-caption">add-36.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
 
   <section class="story-section" id="month-3">
+  <img class="sticker" src="assets/photos/add-37.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-38.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-39.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-40.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-41.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-42.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-43.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-44.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-45.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-46.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-47.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-48.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+  <img class="sticker" src="assets/photos/add-49.jpg" alt="" style="top:14%;left:0%;transform:rotate(4deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">03</span>
@@ -818,25 +848,25 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card feature" data-photo="assets/photos/03-11.jpg"><!-- <img src="assets/photos/03-11.jpg" alt="3ヶ月目の写真 11"> --><div class="photo-placeholder"><span>03 / 11</span></div><figcaption class="photo-caption">3 MONTH / 11</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/03-12.jpg"><!-- <img src="assets/photos/03-12.jpg" alt="3ヶ月目の写真 12"> --><div class="photo-placeholder"><span>03 / 12</span></div><figcaption class="photo-caption">3 MONTH / 12</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/03-13.jpg"><!-- <img src="assets/photos/03-13.jpg" alt="3ヶ月目の写真 13"> --><div class="photo-placeholder"><span>03 / 13</span></div><figcaption class="photo-caption">3 MONTH / 13</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-37.jpg"><!-- <img src="assets/photos/add-37.jpg" alt=""> --><div class="photo-placeholder"><span>add-37.jpg</span></div><figcaption class="photo-caption">add-37.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-38.jpg"><!-- <img src="assets/photos/add-38.jpg" alt=""> --><div class="photo-placeholder"><span>add-38.jpg</span></div><figcaption class="photo-caption">add-38.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-39.jpg"><!-- <img src="assets/photos/add-39.jpg" alt=""> --><div class="photo-placeholder"><span>add-39.jpg</span></div><figcaption class="photo-caption">add-39.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-40.jpg"><!-- <img src="assets/photos/add-40.jpg" alt=""> --><div class="photo-placeholder"><span>add-40.jpg</span></div><figcaption class="photo-caption">add-40.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-41.jpg"><!-- <img src="assets/photos/add-41.jpg" alt=""> --><div class="photo-placeholder"><span>add-41.jpg</span></div><figcaption class="photo-caption">add-41.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-42.jpg"><!-- <img src="assets/photos/add-42.jpg" alt=""> --><div class="photo-placeholder"><span>add-42.jpg</span></div><figcaption class="photo-caption">add-42.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-43.jpg"><!-- <img src="assets/photos/add-43.jpg" alt=""> --><div class="photo-placeholder"><span>add-43.jpg</span></div><figcaption class="photo-caption">add-43.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-44.jpg"><!-- <img src="assets/photos/add-44.jpg" alt=""> --><div class="photo-placeholder"><span>add-44.jpg</span></div><figcaption class="photo-caption">add-44.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-45.jpg"><!-- <img src="assets/photos/add-45.jpg" alt=""> --><div class="photo-placeholder"><span>add-45.jpg</span></div><figcaption class="photo-caption">add-45.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-46.jpg"><!-- <img src="assets/photos/add-46.jpg" alt=""> --><div class="photo-placeholder"><span>add-46.jpg</span></div><figcaption class="photo-caption">add-46.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-47.jpg"><!-- <img src="assets/photos/add-47.jpg" alt=""> --><div class="photo-placeholder"><span>add-47.jpg</span></div><figcaption class="photo-caption">add-47.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-48.jpg"><!-- <img src="assets/photos/add-48.jpg" alt=""> --><div class="photo-placeholder"><span>add-48.jpg</span></div><figcaption class="photo-caption">add-48.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-49.jpg"><!-- <img src="assets/photos/add-49.jpg" alt=""> --><div class="photo-placeholder"><span>add-49.jpg</span></div><figcaption class="photo-caption">add-49.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
 
   <section class="story-section" id="month-4">
+  <img class="sticker" src="assets/photos/add-50.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-51.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-52.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-53.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-54.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-55.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-56.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-57.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-58.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-59.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-60.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-61.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">04</span>
@@ -859,24 +889,25 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card feature" data-photo="assets/photos/04-13.jpg"><!-- <img src="assets/photos/04-13.jpg" alt="4ヶ月目の写真 13"> --><div class="photo-placeholder"><span>04 / 13</span></div><figcaption class="photo-caption">4 MONTH / 13</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/04-14.jpg"><!-- <img src="assets/photos/04-14.jpg" alt="4ヶ月目の写真 14"> --><div class="photo-placeholder"><span>04 / 14</span></div><figcaption class="photo-caption">4 MONTH / 14</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/04-15.jpg"><!-- <img src="assets/photos/04-15.jpg" alt="4ヶ月目の写真 15"> --><div class="photo-placeholder"><span>04 / 15</span></div><figcaption class="photo-caption">4 MONTH / 15</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-50.jpg"><!-- <img src="assets/photos/add-50.jpg" alt=""> --><div class="photo-placeholder"><span>add-50.jpg</span></div><figcaption class="photo-caption">add-50.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-51.jpg"><!-- <img src="assets/photos/add-51.jpg" alt=""> --><div class="photo-placeholder"><span>add-51.jpg</span></div><figcaption class="photo-caption">add-51.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-52.jpg"><!-- <img src="assets/photos/add-52.jpg" alt=""> --><div class="photo-placeholder"><span>add-52.jpg</span></div><figcaption class="photo-caption">add-52.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-53.jpg"><!-- <img src="assets/photos/add-53.jpg" alt=""> --><div class="photo-placeholder"><span>add-53.jpg</span></div><figcaption class="photo-caption">add-53.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-54.jpg"><!-- <img src="assets/photos/add-54.jpg" alt=""> --><div class="photo-placeholder"><span>add-54.jpg</span></div><figcaption class="photo-caption">add-54.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-55.jpg"><!-- <img src="assets/photos/add-55.jpg" alt=""> --><div class="photo-placeholder"><span>add-55.jpg</span></div><figcaption class="photo-caption">add-55.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-56.jpg"><!-- <img src="assets/photos/add-56.jpg" alt=""> --><div class="photo-placeholder"><span>add-56.jpg</span></div><figcaption class="photo-caption">add-56.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-57.jpg"><!-- <img src="assets/photos/add-57.jpg" alt=""> --><div class="photo-placeholder"><span>add-57.jpg</span></div><figcaption class="photo-caption">add-57.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-58.jpg"><!-- <img src="assets/photos/add-58.jpg" alt=""> --><div class="photo-placeholder"><span>add-58.jpg</span></div><figcaption class="photo-caption">add-58.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-59.jpg"><!-- <img src="assets/photos/add-59.jpg" alt=""> --><div class="photo-placeholder"><span>add-59.jpg</span></div><figcaption class="photo-caption">add-59.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-60.jpg"><!-- <img src="assets/photos/add-60.jpg" alt=""> --><div class="photo-placeholder"><span>add-60.jpg</span></div><figcaption class="photo-caption">add-60.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-61.jpg"><!-- <img src="assets/photos/add-61.jpg" alt=""> --><div class="photo-placeholder"><span>add-61.jpg</span></div><figcaption class="photo-caption">add-61.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
 
   <section class="story-section" id="month-5">
+  <img class="sticker" src="assets/photos/add-62.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-63.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-64.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-65.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-66.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-67.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-68.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-69.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-70.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-71.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-72.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-73.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">05</span>
@@ -900,23 +931,25 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card tall" data-photo="assets/photos/05-14.jpg"><!-- <img src="assets/photos/05-14.jpg" alt="5 months photo 14"> --><div class="photo-placeholder"><span>05 / 14</span></div><figcaption class="photo-caption">5 MONTH / 14</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/05-15.jpg"><!-- <img src="assets/photos/05-15.jpg" alt="5 months photo 15"> --><div class="photo-placeholder"><span>05 / 15</span></div><figcaption class="photo-caption">5 MONTH / 15</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/05-16.jpg"><!-- <img src="assets/photos/05-16.jpg" alt="5 months photo 16"> --><div class="photo-placeholder"><span>05 / 16</span></div><figcaption class="photo-caption">5 MONTH / 16</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-62.jpg"><!-- <img src="assets/photos/add-62.jpg" alt=""> --><div class="photo-placeholder"><span>add-62.jpg</span></div><figcaption class="photo-caption">add-62.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-63.jpg"><!-- <img src="assets/photos/add-63.jpg" alt=""> --><div class="photo-placeholder"><span>add-63.jpg</span></div><figcaption class="photo-caption">add-63.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-64.jpg"><!-- <img src="assets/photos/add-64.jpg" alt=""> --><div class="photo-placeholder"><span>add-64.jpg</span></div><figcaption class="photo-caption">add-64.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-65.jpg"><!-- <img src="assets/photos/add-65.jpg" alt=""> --><div class="photo-placeholder"><span>add-65.jpg</span></div><figcaption class="photo-caption">add-65.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-66.jpg"><!-- <img src="assets/photos/add-66.jpg" alt=""> --><div class="photo-placeholder"><span>add-66.jpg</span></div><figcaption class="photo-caption">add-66.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-67.jpg"><!-- <img src="assets/photos/add-67.jpg" alt=""> --><div class="photo-placeholder"><span>add-67.jpg</span></div><figcaption class="photo-caption">add-67.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-68.jpg"><!-- <img src="assets/photos/add-68.jpg" alt=""> --><div class="photo-placeholder"><span>add-68.jpg</span></div><figcaption class="photo-caption">add-68.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-69.jpg"><!-- <img src="assets/photos/add-69.jpg" alt=""> --><div class="photo-placeholder"><span>add-69.jpg</span></div><figcaption class="photo-caption">add-69.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-70.jpg"><!-- <img src="assets/photos/add-70.jpg" alt=""> --><div class="photo-placeholder"><span>add-70.jpg</span></div><figcaption class="photo-caption">add-70.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-71.jpg"><!-- <img src="assets/photos/add-71.jpg" alt=""> --><div class="photo-placeholder"><span>add-71.jpg</span></div><figcaption class="photo-caption">add-71.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-72.jpg"><!-- <img src="assets/photos/add-72.jpg" alt=""> --><div class="photo-placeholder"><span>add-72.jpg</span></div><figcaption class="photo-caption">add-72.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-73.jpg"><!-- <img src="assets/photos/add-73.jpg" alt=""> --><div class="photo-placeholder"><span>add-73.jpg</span></div><figcaption class="photo-caption">add-73.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
   </section>
   <section class="story-section" id="month-6">
+  <img class="sticker" src="assets/photos/add-74.jpg" alt="" style="top:4%;left:1%;transform:rotate(-11deg)">
+  <img class="sticker" src="assets/photos/add-75.jpg" alt="" style="top:6%;right:0%;transform:rotate(9deg)">
+  <img class="sticker" src="assets/photos/add-76.jpg" alt="" style="top:20%;left:0%;transform:rotate(-7deg)">
+  <img class="sticker" src="assets/photos/add-77.jpg" alt="" style="top:22%;right:1%;transform:rotate(13deg)">
+  <img class="sticker" src="assets/photos/add-78.jpg" alt="" style="top:38%;left:1%;transform:rotate(-14deg)">
+  <img class="sticker" src="assets/photos/add-79.jpg" alt="" style="top:40%;right:0%;transform:rotate(6deg)">
+  <img class="sticker" src="assets/photos/add-80.jpg" alt="" style="top:56%;left:0%;transform:rotate(-5deg)">
+  <img class="sticker" src="assets/photos/add-81.jpg" alt="" style="top:58%;right:1%;transform:rotate(12deg)">
+  <img class="sticker" src="assets/photos/add-82.jpg" alt="" style="top:72%;left:1%;transform:rotate(-10deg)">
+  <img class="sticker" src="assets/photos/add-83.jpg" alt="" style="top:74%;right:0%;transform:rotate(8deg)">
+  <img class="sticker" src="assets/photos/add-84.jpg" alt="" style="top:88%;left:2%;transform:rotate(-6deg)">
+  <img class="sticker" src="assets/photos/add-85.jpg" alt="" style="top:90%;right:1%;transform:rotate(14deg)">
+  <img class="sticker" src="assets/photos/add-86.jpg" alt="" style="top:14%;left:0%;transform:rotate(4deg)">
+
     <div class="section-inner">
       <header class="section-head reveal">
         <span class="section-index">06</span>
@@ -959,19 +992,6 @@ img{display:block;max-width:100%;height:auto}
         <figure class="photo-card tall" data-photo="assets/photos/06-33.jpg"><!-- <img src="assets/photos/06-33.jpg" alt="6ヶ月目の写真 33"> --><div class="photo-placeholder"><span>06 / 33</span></div><figcaption class="photo-caption">6 MONTH / 33</figcaption></figure>
         <figure class="photo-card tall" data-photo="assets/photos/06-34.jpg"><!-- <img src="assets/photos/06-34.jpg" alt="6ヶ月目の写真 34"> --><div class="photo-placeholder"><span>06 / 34</span></div><figcaption class="photo-caption">6 MONTH / 34</figcaption></figure>
         <figure class="photo-card feature" data-photo="assets/photos/06-35.jpg"><!-- <img src="assets/photos/06-35.jpg" alt="6ヶ月目の写真 35"> --><div class="photo-placeholder"><span>06 / 35</span></div><figcaption class="photo-caption">6 MONTH / 35</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-74.jpg"><!-- <img src="assets/photos/add-74.jpg" alt=""> --><div class="photo-placeholder"><span>add-74.jpg</span></div><figcaption class="photo-caption">add-74.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-75.jpg"><!-- <img src="assets/photos/add-75.jpg" alt=""> --><div class="photo-placeholder"><span>add-75.jpg</span></div><figcaption class="photo-caption">add-75.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-76.jpg"><!-- <img src="assets/photos/add-76.jpg" alt=""> --><div class="photo-placeholder"><span>add-76.jpg</span></div><figcaption class="photo-caption">add-76.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-77.jpg"><!-- <img src="assets/photos/add-77.jpg" alt=""> --><div class="photo-placeholder"><span>add-77.jpg</span></div><figcaption class="photo-caption">add-77.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-78.jpg"><!-- <img src="assets/photos/add-78.jpg" alt=""> --><div class="photo-placeholder"><span>add-78.jpg</span></div><figcaption class="photo-caption">add-78.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-79.jpg"><!-- <img src="assets/photos/add-79.jpg" alt=""> --><div class="photo-placeholder"><span>add-79.jpg</span></div><figcaption class="photo-caption">add-79.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-80.jpg"><!-- <img src="assets/photos/add-80.jpg" alt=""> --><div class="photo-placeholder"><span>add-80.jpg</span></div><figcaption class="photo-caption">add-80.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-81.jpg"><!-- <img src="assets/photos/add-81.jpg" alt=""> --><div class="photo-placeholder"><span>add-81.jpg</span></div><figcaption class="photo-caption">add-81.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-82.jpg"><!-- <img src="assets/photos/add-82.jpg" alt=""> --><div class="photo-placeholder"><span>add-82.jpg</span></div><figcaption class="photo-caption">add-82.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-83.jpg"><!-- <img src="assets/photos/add-83.jpg" alt=""> --><div class="photo-placeholder"><span>add-83.jpg</span></div><figcaption class="photo-caption">add-83.jpg</figcaption></figure>
-        <figure class="photo-card feature" data-photo="assets/photos/add-84.jpg"><!-- <img src="assets/photos/add-84.jpg" alt=""> --><div class="photo-placeholder"><span>add-84.jpg</span></div><figcaption class="photo-caption">add-84.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-85.jpg"><!-- <img src="assets/photos/add-85.jpg" alt=""> --><div class="photo-placeholder"><span>add-85.jpg</span></div><figcaption class="photo-caption">add-85.jpg</figcaption></figure>
-        <figure class="photo-card tall" data-photo="assets/photos/add-86.jpg"><!-- <img src="assets/photos/add-86.jpg" alt=""> --><div class="photo-placeholder"><span>add-86.jpg</span></div><figcaption class="photo-caption">add-86.jpg</figcaption></figure>
       </div>
       <div class="shelf-line"></div>
     </div>
