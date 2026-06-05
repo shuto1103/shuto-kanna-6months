@@ -252,6 +252,7 @@ img{display:block;max-width:100%;height:auto}
   display:none;
 }
 .photo-board{
+  position:relative;
   display:grid;
   grid-template-columns:repeat(12, 1fr);
   align-items:start;
@@ -267,6 +268,7 @@ img{display:block;max-width:100%;height:auto}
   transform:rotate(var(--tilt, 0deg));
   opacity:0;
   translate:0 26px;
+  z-index:2;
   transition:opacity .7s ease, translate .7s ease, transform .7s ease;
 }
 .photo-card.visible{opacity:1;translate:0 0}
@@ -527,6 +529,9 @@ img{display:block;max-width:100%;height:auto}
   z-index:8;
   border-radius:2px;
 }
+.memory-stamp{
+  display:none;
+}
 
 
 @media(max-width:760px){
@@ -604,6 +609,24 @@ img{display:block;max-width:100%;height:auto}
     align-self:flex-start;
     margin-left:1vw;
     --tilt:4.4deg;
+  }
+  .memory-stamp{
+    display:block;
+    position:absolute;
+    left:var(--x);
+    top:var(--y);
+    width:var(--size);
+    aspect-ratio:1;
+    object-fit:cover;
+    padding:4px;
+    border-radius:var(--radius);
+    background:#fff8e8;
+    border:1px solid rgba(47,41,34,.12);
+    box-shadow:0 10px 18px rgba(47,41,34,.18);
+    transform:translate(-50%, -50%) rotate(var(--r));
+    opacity:.92;
+    pointer-events:none;
+    z-index:1;
   }
   .photo-placeholder{min-height:180px}
   .continuing{height:62svh}
@@ -933,8 +956,68 @@ document.querySelectorAll(".photo-card[data-photo]").forEach((card) => {
   img.alt = card.querySelector(".photo-caption")?.textContent || "";
   img.onload = () => {
     card.querySelector(".photo-placeholder")?.replaceWith(img);
+    scheduleStampLayout();
   };
 });
+
+const stampSources = Array.from({ length: 86 }, (_, i) => `assets/stamps/stamp-${String(i + 1).padStart(2, "0")}.jpg`);
+const stampSizes = [44, 58, 50, 70, 54, 64, 48, 76, 60, 52, 68, 46];
+const stampTurns = [-12, 8, -5, 14, -9, 4, 11, -15, 6, -7, 13, -3];
+const stampY = [0.18, 0.42, 0.66, 0.3, 0.55, 0.74];
+let stampFrame = 0;
+
+function scheduleStampLayout() {
+  cancelAnimationFrame(stampFrame);
+  stampFrame = requestAnimationFrame(layoutStamps);
+}
+
+function layoutStamps() {
+  const boards = document.querySelectorAll(".story-section:not(#top) .photo-board");
+  const mobile = window.matchMedia("(max-width: 760px)").matches;
+  let stampIndex = 0;
+
+  boards.forEach((board) => {
+    board.querySelectorAll(".memory-stamp").forEach((stamp) => stamp.remove());
+    if (!mobile) return;
+
+    const boardRect = board.getBoundingClientRect();
+    const cards = [...board.querySelectorAll(".photo-card")];
+
+    cards.forEach((card, index) => {
+      if (index % 2 === 1 && index % 5 !== 3) return;
+
+      const cardRect = card.getBoundingClientRect();
+      const size = stampSizes[(stampIndex + index) % stampSizes.length];
+      const emptyRight = cardRect.left + cardRect.width / 2 < boardRect.left + boardRect.width / 2;
+      const minX = size / 2 + 6;
+      const maxX = boardRect.width - size / 2 - 6;
+      const gap = 16 + ((index % 4) * 4);
+      let x = emptyRight
+        ? cardRect.right - boardRect.left + gap + size / 2
+        : cardRect.left - boardRect.left - gap - size / 2;
+
+      x = Math.max(minX, Math.min(maxX, x));
+
+      const y = cardRect.top - boardRect.top + cardRect.height * stampY[(stampIndex + index) % stampY.length];
+      const stamp = document.createElement("img");
+      stamp.className = "memory-stamp";
+      stamp.src = stampSources[stampIndex % stampSources.length];
+      stamp.alt = "";
+      stamp.loading = "lazy";
+      stamp.decoding = "async";
+      stamp.style.setProperty("--x", `${Math.round(x)}px`);
+      stamp.style.setProperty("--y", `${Math.round(y)}px`);
+      stamp.style.setProperty("--size", `${size}px`);
+      stamp.style.setProperty("--r", `${stampTurns[(stampIndex + index) % stampTurns.length]}deg`);
+      stamp.style.setProperty("--radius", index % 3 === 0 ? "999px" : "12px");
+      board.appendChild(stamp);
+      stampIndex++;
+    });
+  });
+}
+
+window.addEventListener("load", scheduleStampLayout);
+window.addEventListener("resize", scheduleStampLayout);
 </script>
 </body>
 </html>
