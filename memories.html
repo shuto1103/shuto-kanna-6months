@@ -616,11 +616,15 @@ img{display:block;max-width:100%;height:auto}
     left:var(--x);
     top:var(--y);
     width:var(--size);
-    height:auto;
-    object-fit:contain;
-    filter:drop-shadow(0 8px 10px rgba(47,41,34,.18));
+    aspect-ratio:1;
+    object-fit:cover;
+    padding:5px;
+    border-radius:var(--radius);
+    background:#fff8e8;
+    border:1px solid rgba(47,41,34,.12);
+    box-shadow:0 14px 24px rgba(47,41,34,.2);
     transform:translate(-50%, -50%) rotate(var(--r));
-    opacity:.96;
+    opacity:.94;
     pointer-events:none;
     z-index:1;
   }
@@ -956,8 +960,8 @@ document.querySelectorAll(".photo-card[data-photo]").forEach((card) => {
   };
 });
 
-const stampSources = Array.from({ length: 86 }, (_, i) => `assets/stamps/stamp-${String(i + 1).padStart(2, "0")}.png`);
-const stampSizes = [72, 92, 82, 112, 88, 104, 76, 118, 96, 84, 108, 74];
+const stampSources = Array.from({ length: 86 }, (_, i) => `assets/stamps/stamp-${String(i + 1).padStart(2, "0")}.jpg`);
+const stampSizes = [118, 148, 132, 178, 140, 166, 124, 188, 152, 136, 172, 120];
 const stampTurns = [-12, 8, -5, 14, -9, 4, 11, -15, 6, -7, 13, -3];
 const stampY = [0.18, 0.42, 0.66, 0.3, 0.55, 0.74];
 let stampFrame = 0;
