@@ -274,8 +274,8 @@ img{display:block;max-width:100%;height:auto}
   transition:opacity .7s ease, translate .7s ease, transform .7s ease;
 }
 .photo-card.visible{opacity:1;translate:0 0}
-.photo-card:nth-child(2n){--tilt:1.2deg}
-.photo-card:nth-child(3n){--tilt:-1.4deg}
+.photo-card:nth-of-type(2n){--tilt:1.2deg}
+.photo-card:nth-of-type(3n){--tilt:-1.4deg}
 .photo-card.feature{grid-column:span 7}
 .photo-card.tall{grid-column:span 5}
 .photo-card.small{grid-column:span 3}
@@ -534,6 +534,9 @@ img{display:block;max-width:100%;height:auto}
 .memory-stamp{
   display:none;
 }
+.memory-stamp-slot{
+  display:none;
+}
 
 
 
@@ -552,6 +555,7 @@ img{display:block;max-width:100%;height:auto}
   .hero::after{inset:22px}
   .hero-object.tag{left:6vw;top:14%;scale:.78}
   .hero-object.cup{display:none}
+  .sticker{display:none}
   .story-section{padding:70px 0}
   .section-inner{width:min(100% - 28px, 1040px)}
   .section-head{grid-template-columns:1fr;gap:12px;margin-bottom:30px}
@@ -570,64 +574,75 @@ img{display:block;max-width:100%;height:auto}
   .photo-board .photo-card.small{
     grid-column:unset;
     width:min(278px, 74vw);
-    margin-bottom:74px;
+    margin-bottom:18px;
   }
-  .photo-board .photo-card:nth-child(odd){
+  .photo-board .photo-card:nth-of-type(odd){
     align-self:flex-start;
     --tilt:-4.2deg;
   }
-  .photo-board .photo-card:nth-child(even){
+  .photo-board .photo-card:nth-of-type(even){
     align-self:flex-end;
     --tilt:3.8deg;
   }
-  .photo-board .photo-card:nth-child(3n){
+  .photo-board .photo-card:nth-of-type(3n){
     width:min(314px, 84vw);
     align-self:center;
     --tilt:-1.2deg;
   }
-  .photo-board .photo-card:nth-child(4n){
+  .photo-board .photo-card:nth-of-type(4n){
     width:min(246px, 66vw);
     align-self:flex-end;
     margin-right:5vw;
     --tilt:5.8deg;
   }
-  .photo-board .photo-card:nth-child(5n){
+  .photo-board .photo-card:nth-of-type(5n){
     width:min(292px, 78vw);
     align-self:flex-start;
     margin-left:4vw;
-    margin-bottom:128px;
+    margin-bottom:18px;
     --tilt:-2.6deg;
   }
-  .photo-board .photo-card:nth-child(6n){
+  .photo-board .photo-card:nth-of-type(6n){
     width:min(238px, 64vw);
     align-self:flex-start;
     margin-left:10vw;
     --tilt:2.2deg;
   }
-  .photo-board .photo-card:nth-child(7n){
+  .photo-board .photo-card:nth-of-type(7n){
     width:min(326px, 86vw);
     align-self:center;
-    margin-bottom:118px;
+    margin-bottom:18px;
     --tilt:-5.4deg;
   }
-  .photo-board .photo-card:nth-child(8n){
+  .photo-board .photo-card:nth-of-type(8n){
     width:min(266px, 71vw);
     align-self:flex-end;
     margin-right:1vw;
     --tilt:1.6deg;
   }
-  .photo-board .photo-card:nth-child(9n){
+  .photo-board .photo-card:nth-of-type(9n){
     width:min(302px, 80vw);
     align-self:flex-start;
     margin-left:1vw;
     --tilt:4.4deg;
   }
+  .memory-stamp-slot{
+    display:flex;
+    width:100%;
+    min-height:260px;
+    align-items:center;
+    padding:38px 20px;
+    margin:0 0 38px;
+  }
+  .memory-stamp-slot:nth-of-type(3n+1){justify-content:flex-start}
+  .memory-stamp-slot:nth-of-type(3n+2){justify-content:flex-end}
+  .memory-stamp-slot:nth-of-type(3n){justify-content:center}
   .memory-stamp{
     display:block;
-    position:absolute;
-    left:var(--x);
-    top:var(--y);
-    width:var(--size);
+    position:static;
+    width:auto;
+    max-width:min(var(--size), 62vw);
+    max-height:230px;
     height:auto;
     object-fit:contain;
     padding:5px;
@@ -635,10 +650,10 @@ img{display:block;max-width:100%;height:auto}
     background:#fff8e8;
     border:1px solid rgba(47,41,34,.12);
     box-shadow:0 14px 24px rgba(47,41,34,.2);
-    transform:translate(-50%, -50%) rotate(var(--r));
+    transform:rotate(var(--r));
     opacity:.94;
     pointer-events:none;
-    z-index:1;
+    z-index:auto;
   }
   .photo-placeholder{min-height:180px}
   .continuing{height:62svh}
@@ -1015,7 +1030,6 @@ document.querySelectorAll(".photo-card[data-photo]").forEach((card) => {
 });
 
 const stampSources = Array.from({ length: 86 }, (_, i) => `assets/stamps/stamp-${String(i + 1).padStart(2, "0")}.jpg`);
-const stampRatios = [1.3636, 1.7822, 0.725, 1.2162, 0.95, 0.9917, 0.4444, 0.8611, 0.9444, 0.9806, 1.3953, 0.6583, 0.8722, 0.8444, 0.5528, 0.5528, 0.8333, 2.3077, 0.9278, 1.7308, 1.791, 1.1688, 1.2996, 1.5254, 0.8861, 1.6, 0.6833, 0.5194, 0.8444, 0.775, 0.75, 1.0084, 1.0976, 0.8278, 0.875, 1.0909, 1.2903, 0.9083, 0.8389, 1.3636, 1.1429, 2.2086, 0.9972, 0.9944, 2.7068, 1.0169, 0.725, 0.8444, 1.875, 2.1302, 0.6, 0.9111, 1.1111, 1.5063, 0.7611, 0.9083, 0.9694, 1.3585, 0.9417, 1.4173, 0.9139, 0.9278, 1.5385, 0.9917, 0.7556, 1.8462, 4.557, 1.118, 0.5611, 0.8056, 2.3226, 0.7611, 1.519, 0.6833, 1.4575, 0.8861, 0.6278, 0.8167, 0.8667, 0.3944, 1.0345, 0.8861, 1.2371, 0.9083, 1.3043, 1.3953];
 const stampSizes = [132, 164, 146, 192, 154, 178, 138, 198, 168, 150, 184, 134];
 const stampTurns = [-12, 8, -5, 14, -9, 4, 11, -15, 6, -7, 13, -3];
 let stampFrame = 0;
@@ -1031,92 +1045,28 @@ function layoutStamps() {
   let stampIndex = 0;
 
   boards.forEach((board) => {
-    board.querySelectorAll(".memory-stamp").forEach((stamp) => stamp.remove());
+    board.querySelectorAll(".memory-stamp-slot").forEach((slot) => slot.remove());
     if (!mobile) return;
 
-    const boardRect = board.getBoundingClientRect();
     const cards = [...board.querySelectorAll(".photo-card")];
-    const cardBoxes = cards.map((card) => {
-      const rect = card.getBoundingClientRect();
-      return {
-        left: rect.left - boardRect.left,
-        right: rect.right - boardRect.left,
-        top: rect.top - boardRect.top,
-        bottom: rect.bottom - boardRect.top,
-      };
-    });
-    const placedBoxes = [];
-
-    const overlaps = (box, other) => (
-      box.left < other.right &&
-      box.right > other.left &&
-      box.top < other.bottom &&
-      box.bottom > other.top
-    );
 
     cards.forEach((card, index) => {
       if (index % 2 === 1 && index % 5 !== 3) return;
 
-      const cardBox = cardBoxes[index];
       const sourceIndex = stampIndex % stampSources.length;
-      const ratio = stampRatios[sourceIndex] || 1;
-      const maxHeight = 230;
-      const width = Math.min(stampSizes[(stampIndex + index) % stampSizes.length], maxHeight / ratio);
-      const height = width * ratio;
-      const pad = 14;
-      const rightLane = cardBox.left + (cardBox.right - cardBox.left) / 2 < boardRect.width / 2;
-      const candidates = [
-        {
-          x: rightLane ? boardRect.width - width / 2 - pad : width / 2 + pad,
-          y: cardBox.bottom + height / 2 + 18,
-        },
-        {
-          x: rightLane ? width / 2 + pad : boardRect.width - width / 2 - pad,
-          y: cardBox.bottom + height / 2 + 24,
-        },
-        {
-          x: boardRect.width / 2,
-          y: cardBox.bottom + height / 2 + 20,
-        },
-        {
-          x: rightLane ? boardRect.width - width / 2 - pad : width / 2 + pad,
-          y: cardBox.top - height / 2 - 18,
-        },
-      ];
-
-      const placement = candidates.find((candidate) => {
-        const box = {
-          left: candidate.x - width / 2,
-          right: candidate.x + width / 2,
-          top: candidate.y - height / 2,
-          bottom: candidate.y + height / 2,
-        };
-        const inside = box.left >= 0 && box.right <= boardRect.width && box.top >= 0 && box.bottom <= board.scrollHeight;
-        return inside && !cardBoxes.some((cardBox) => overlaps(box, cardBox)) && !placedBoxes.some((placedBox) => overlaps(box, placedBox));
-      });
-
-      if (!placement) return;
-
-      const box = {
-        left: placement.x - width / 2,
-        right: placement.x + width / 2,
-        top: placement.y - height / 2,
-        bottom: placement.y + height / 2,
-      };
-      placedBoxes.push(box);
-
+      const slot = document.createElement("div");
+      slot.className = "memory-stamp-slot";
       const stamp = document.createElement("img");
       stamp.className = "memory-stamp";
       stamp.src = stampSources[sourceIndex];
       stamp.alt = "";
       stamp.loading = "lazy";
       stamp.decoding = "async";
-      stamp.style.setProperty("--x", `${Math.round(placement.x)}px`);
-      stamp.style.setProperty("--y", `${Math.round(placement.y)}px`);
-      stamp.style.setProperty("--size", `${Math.round(width)}px`);
+      stamp.style.setProperty("--size", `${stampSizes[(stampIndex + index) % stampSizes.length]}px`);
       stamp.style.setProperty("--r", `${stampTurns[(stampIndex + index) % stampTurns.length]}deg`);
       stamp.style.setProperty("--radius", index % 3 === 0 ? "999px" : "12px");
-      board.appendChild(stamp);
+      slot.appendChild(stamp);
+      card.insertAdjacentElement("afterend", slot);
       stampIndex++;
     });
   });
