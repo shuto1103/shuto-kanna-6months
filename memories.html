@@ -621,15 +621,12 @@ img{display:block;max-width:100%;height:auto}
     margin-left:1vw;
     --tilt:4.4deg;
   }
-  .photo-board .photo-card:nth-of-type(3n+2){
-    margin-bottom:290px;
-  }
   .memory-stamp{
     display:block;
-    position:absolute;
-    left:var(--x);
-    top:var(--y);
+    position:static;
     width:var(--size);
+    max-width:42vw;
+    max-height:190px;
     height:auto;
     object-fit:contain;
     padding:5px;
@@ -637,10 +634,28 @@ img{display:block;max-width:100%;height:auto}
     background:#fff8e8;
     border:1px solid rgba(47,41,34,.12);
     box-shadow:0 14px 24px rgba(47,41,34,.2);
-    transform:translate(-50%, -50%) rotate(var(--r));
+    transform:rotate(var(--r));
     opacity:.94;
     pointer-events:none;
-    z-index:1;
+  }
+  .memory-stamp-cloud{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    align-items:center;
+    min-height:180px;
+    padding:22px 4px;
+  }
+  .memory-stamp-cloud.before{
+    margin:-10px 0 26px;
+  }
+  .memory-stamp-cloud.after{
+    margin:18px 0 4px;
+  }
+  .memory-stamp-cloud .memory-stamp:nth-child(odd){
+    justify-self:start;
+  }
+  .memory-stamp-cloud .memory-stamp:nth-child(even){
+    justify-self:end;
   }
   .photo-placeholder{min-height:180px}
   .continuing{height:62svh}
@@ -1033,86 +1048,35 @@ function layoutStamps() {
   let stampIndex = 0;
 
   boards.forEach((board) => {
-    board.querySelectorAll(".memory-stamp").forEach((stamp) => stamp.remove());
+    const section = board.closest(".story-section");
+    section.querySelectorAll(".memory-stamp-cloud").forEach((cloud) => cloud.remove());
     if (!mobile) return;
 
-    const boardRect = board.getBoundingClientRect();
-    const cards = [...board.querySelectorAll(".photo-card")];
-    const clearance = 14;
-    const cardBoxes = cards.map((card) => {
-      const rect = card.getBoundingClientRect();
-      return {
-        left: rect.left - boardRect.left - clearance,
-        right: rect.right - boardRect.left + clearance,
-        top: rect.top - boardRect.top - clearance,
-        bottom: rect.bottom - boardRect.top + clearance,
-      };
-    });
-    const placedBoxes = [];
-    const overlaps = (box, other) => (
-      box.left < other.right &&
-      box.right > other.left &&
-      box.top < other.bottom &&
-      box.bottom > other.top
-    );
+    const createCloud = (position) => {
+      const cloud = document.createElement("div");
+      cloud.className = `memory-stamp-cloud ${position}`;
+      cloud.setAttribute("aria-hidden", "true");
 
-    cards.forEach((card, index) => {
-      if (index % 3 !== 1) return;
-
+      for (let index = 0; index < 2; index++) {
       const sourceIndex = stampIndex % stampSources.length;
-      const ratio = stampRatios[sourceIndex] || 1;
-      const desiredWidth = stampSizes[(stampIndex + index) % stampSizes.length];
-      const width = Math.min(desiredWidth, 184 / ratio);
-      const height = width * ratio;
-      const turn = stampTurns[(stampIndex + index) % stampTurns.length];
-      const radians = Math.abs(turn) * Math.PI / 180;
-      const boxWidth = Math.abs(width * Math.cos(radians)) + Math.abs(height * Math.sin(radians)) + 14;
-      const boxHeight = Math.abs(width * Math.sin(radians)) + Math.abs(height * Math.cos(radians)) + 14;
-      const cardBox = cardBoxes[index];
-      const nextBox = cardBoxes[index + 1];
-      const gapTop = cardBox.bottom + clearance;
-      const gapBottom = nextBox ? nextBox.top - clearance : board.scrollHeight - 12;
-      const y = gapTop + (gapBottom - gapTop) / 2;
-      const sideFirst = index % 2 === 0;
-      const candidates = [
-        { x: sideFirst ? boxWidth / 2 + 12 : boardRect.width - boxWidth / 2 - 12, y },
-        { x: sideFirst ? boardRect.width - boxWidth / 2 - 12 : boxWidth / 2 + 12, y },
-        { x: boardRect.width / 2, y },
-      ];
-      const placement = candidates.find((candidate) => {
-        const box = {
-          left: candidate.x - boxWidth / 2,
-          right: candidate.x + boxWidth / 2,
-          top: candidate.y - boxHeight / 2,
-          bottom: candidate.y + boxHeight / 2,
-        };
-        const inside = box.left >= 6 && box.right <= boardRect.width - 6 && box.top >= 0 && box.bottom <= board.scrollHeight;
-        return inside && !cardBoxes.some((other) => overlaps(box, other)) && !placedBoxes.some((other) => overlaps(box, other));
-      });
+        const stamp = document.createElement("img");
+        stamp.className = "memory-stamp";
+        stamp.src = stampSources[sourceIndex];
+        stamp.alt = "";
+        stamp.loading = "lazy";
+        stamp.decoding = "async";
+        stamp.style.setProperty("--size", `${stampSizes[(stampIndex + index) % stampSizes.length]}px`);
+        stamp.style.setProperty("--r", `${stampTurns[(stampIndex + index) % stampTurns.length]}deg`);
+        stamp.style.setProperty("--radius", stampIndex % 3 === 0 ? "999px" : "12px");
+        cloud.appendChild(stamp);
+        stampIndex++;
+      }
 
-      if (!placement) return;
+      return cloud;
+    };
 
-      placedBoxes.push({
-        left: placement.x - boxWidth / 2 - 8,
-        right: placement.x + boxWidth / 2 + 8,
-        top: placement.y - boxHeight / 2 - 8,
-        bottom: placement.y + boxHeight / 2 + 8,
-      });
-
-      const stamp = document.createElement("img");
-      stamp.className = "memory-stamp";
-      stamp.src = stampSources[sourceIndex];
-      stamp.alt = "";
-      stamp.loading = "lazy";
-      stamp.decoding = "async";
-      stamp.style.setProperty("--x", `${Math.round(placement.x)}px`);
-      stamp.style.setProperty("--y", `${Math.round(placement.y)}px`);
-      stamp.style.setProperty("--size", `${Math.round(width)}px`);
-      stamp.style.setProperty("--r", `${turn}deg`);
-      stamp.style.setProperty("--radius", index % 3 === 0 ? "999px" : "12px");
-      board.appendChild(stamp);
-      stampIndex++;
-    });
+    board.insertAdjacentElement("beforebegin", createCloud("before"));
+    board.insertAdjacentElement("afterend", createCloud("after"));
   });
 }
 
